@@ -1,17 +1,25 @@
 <?php
 
-    class BuscarAluno{
-        
-        function exec(){
+    class AlunoBase {
 
+        protected $conexao;
+
+        function __construct(){
             require 'conexao.php';
-            $testeConObject = new Conexao();
-            $conexao = $testeConObject->getConexao();
-            
+            $conObj = New Conexao();
+            $this->conexao = $conObj->getConexao();
+        }
+    
+    }
+
+    class BuscarAluno extends AlunoBase{
+                
+        function exec(){
+        
             $sql = "SELECT * FROM aluno ORDER BY nome DESC";
 
             try {
-                $stmt = $conexao->prepare($sql);
+                $stmt = $this->conexao->prepare($sql);
                 $stmt->execute();
             } catch (\Throwable $th) {
                 var_dump($th);
@@ -33,7 +41,7 @@
         }
     }
     
-    class InserirAluno{
+    class InserirAluno extends AlunoBase{
 
         private $nome;
         private $matricula;
@@ -41,16 +49,14 @@
         function __construct($nome, $matricula){
             $this->nome = $nome;
             $this->matricula = $matricula;
+            parent::__construct();
         }
         
         function exec(){
-            require 'conexao.php';
-            $testeConObject = new Conexao();
-            $conexao = $testeConObject->getConexao();
-
+            
             $sql = "INSERT INTO aluno (nome, matricula) VALUES (:nome, :matricula) ";
             
-            $stmt = $conexao->prepare($sql);
+            $stmt = $this->conexao->prepare($sql);
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':matricula', $this->matricula);
 
