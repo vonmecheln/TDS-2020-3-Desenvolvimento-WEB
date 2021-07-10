@@ -12,7 +12,8 @@
     <?php 
 
     require 'aluno_data.php';
-    $alunos = buscarAlunos();
+    $dataBuscarAlunos = new BuscarAluno();
+    $alunos = $dataBuscarAlunos->exec();
     
     foreach ($alunos as $key => $aluno) {
         echo $aluno . "<br>". "\n";

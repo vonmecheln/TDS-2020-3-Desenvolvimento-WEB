@@ -16,7 +16,7 @@
     }
 
     require 'aluno_data.php';
-    inserirAluno($nome, $matricula);
-
-
+    $dataInserirAluno = new InserirAluno($nome, $matricula);
+    $dataInserirAluno->exec();
+        
 ?>
