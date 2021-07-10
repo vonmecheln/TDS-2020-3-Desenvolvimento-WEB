@@ -11,41 +11,8 @@
 <body>
     <?php 
 
-    $alunos = [];
-    
-    echo "<pre>";
-    try {
-        $conexao = new PDO(
-            "mysql:host=localhost;dbname=IFPR",
-            "app_site_ifpr",
-            "app_site_ifpr");
-        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
-    } catch (\Throwable $th) {
-        var_dump($th);
-    }
-
-    $sql = "SELECT * FROM aluno ORDER BY nome DESC";
-
-    try {
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute();
-    } catch (\Throwable $th) {
-        var_dump($th);
-    }
-
-    if($stmt->setFetchMode(PDO::FETCH_ASSOC)){
-        $result = $stmt->fetchAll();
-        
-        if($result !== false){
-            
-            foreach ($result as $row) {
-                $alunos[] = $row['nome'];
-            }
-
-        }
-        
-    }
-
+    require 'aluno_data.php';
+    $alunos = buscarAlunos();
     
     foreach ($alunos as $key => $aluno) {
         echo $aluno . "<br>". "\n";
