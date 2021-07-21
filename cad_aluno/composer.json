@@ -1,0 +1,19 @@
+{
+    "name": "tds/cad_aluno",
+    "description": "Sistema de gerenciamento de cadastros de alunos",
+    "require": {
+        "latte/latte": "^2.10"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tds\\CadAluno\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luís Henrique Manosso Von Mecheln",
+            "email": "luishenrique.si@gmail.com"
+        }
+    ]
+}
