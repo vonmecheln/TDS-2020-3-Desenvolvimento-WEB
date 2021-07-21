@@ -6,18 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{$title}</title>
+    
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" >
 </head>
 
 <body>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="formulario.php" class="btn btn-primary">Novo Aluno</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
 
-<ul n:if="$alunos">
-{foreach $alunos as $aluno}
-	<li id="aluno-{$iterator->counter}">{$aluno->getNome()|capitalize}</li>
-{/foreach}
-</ul>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Matricula</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {foreach $alunos as $aluno}                
+                        <tr>
+                            <th scope="row">{$aluno->getId()}</th>
+                            <th scope="row">{$aluno->getMatricula()}</th>
+                            <td>{$aluno->getNome()|capitalize}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+                                <form action="formulario.php" method="GET">
+                                    <input type="text" name="id" value="{$aluno->getId()}" hidden>
+                                    <button type="submmit" class="btn btn-success" ><i class="fas fa-edit"></i></button>
+                                </form>
+                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-
+    <ul n:if="$alunos">
+    {foreach $alunos as $aluno}
+        <li id="aluno-{$iterator->counter}">{$aluno->getNome()|capitalize}</li>
+    {/foreach}
+    </ul>
 
 </body>
 

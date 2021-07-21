@@ -24,6 +24,7 @@ class BuscarAluno extends AlunoBase{
                 
                 foreach ($result as $row) {
                     $aluno = new ModelAluno();
+                    $aluno->setId($row['id']);
                     $aluno->setNome($row['nome']);
                     $aluno->setMatricula($row['matricula']);
                     $alunos[] = $aluno;
