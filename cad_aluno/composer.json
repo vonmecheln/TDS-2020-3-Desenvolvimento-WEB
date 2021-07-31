@@ -2,13 +2,20 @@
     "name": "tds/cad_aluno",
     "description": "Sistema de gerenciamento de cadastros de alunos",
     "require": {
-        "latte/latte": "^2.10"
+        "latte/latte": "^2.10",
+        "illuminate/database": "^8.52",
+        "vlucas/phpdotenv": "^5.3",
+        "filp/whoops": "^2.14",
+        "symfony/var-dumper": "^5.3"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Tds\\CadAluno\\": "src/"
-        }
+        },
+        "files": [
+            "config.php"
+        ]
     },
     "authors": [
         {
