@@ -1,0 +1,25 @@
+{
+    "name": "vonmecheln/teste",
+    "description": "Projeto de Teste de Plugins",
+    "require": {
+        "symfony/var-dumper": "^5.3",
+        "filp/whoops": "^2.14",
+        "vlucas/phpdotenv": "^5.3",
+        "illuminate/database": "^8.52",
+        "latte/latte": "^2.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vonmecheln\\Teste\\": "src/"
+        },
+        "files": [
+            "config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Luís Henrique Manosso Von Mecheln",
+            "email": "luishenrique.si@gmail.com"
+        }
+    ]
+}

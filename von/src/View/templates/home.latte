@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    {foreach $perguntas as $pergunta}
+
+        <p>{$pergunta['user']['name']}:
+            <b>{$pergunta['pergunta']}</b>
+        </p>
+
+        {foreach $pergunta["respostas"] as $resposta}
+            <p>{$resposta['user']['name']}
+                <i>{$resposta['resposta']}</i> 
+                <b><span class='tooltiptext'></span></b></p>
+        {/foreach}
+    {/foreach}
+    {* foreach ($perguntas as $pergunta) {
+    echo "<p>".$pergunta['user']['name'].":";
+        echo "<b>".$pergunta['pergunta']."</b></p>";
+
+    foreach ($pergunta["respostas"] as $resposta) {
+    echo "<p>".$resposta['user']['name'].":";
+        echo "<i>".$resposta['resposta'].".</i>";
+        echo " <b class='tooltip'>+" . sizeof($resposta['votos']);
+            echo "<span class='tooltiptext'>";
+                foreach ($resposta['votos'] as $voto) {
+                echo $voto['user']['name']."<br>";
+                }
+                echo "</span></b></p>";
+    }
+    } *}
+
+</body>
+
+</html>
